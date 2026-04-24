@@ -12,4 +12,4 @@ def test_login_campos_vacios(page):
 
     page.click("button[type='submit']")
 
-    expect(page.locator(".flash.success")).to_be_visible()
+    expect(page.locator(".flash.error")).to_be_visible()
