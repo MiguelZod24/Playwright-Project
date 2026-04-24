@@ -132,6 +132,34 @@ El reporte está diseñado con dos perspectivas:
 
 ---
 
+## Flujo de trabajo con IA
+
+Este proyecto integra IA (Claude de Anthropic) como herramienta activa dentro del proceso de QA, no como reemplazo del criterio profesional sino como copiloto que acelera y enriquece el trabajo.
+
+### ¿Qué rol tuvo la IA?
+
+**Generación de casos de prueba**
+A partir de la descripción del módulo a testear, la IA propuso casos de prueba cubriendo happy path, casos negativos y casos límite. El QA Engineer evaluó cada propuesta, descartó lo que no aplicaba y aprobó lo que sí tenía sentido para el contexto real.
+
+**Análisis de fallos**
+Cuando un test falló durante el desarrollo (por ejemplo, un locator incorrecto apuntando a `.flash.success` en lugar de `.flash.error`), la IA analizó el log de error, identificó la causa raíz y propuso la corrección. El QA Engineer validó el diagnóstico antes de aplicar el fix.
+
+**Asistencia en configuración del pipeline**
+El workflow de GitHub Actions y la configuración del envío de reportes por correo fueron construidos con asistencia de IA, iterando en base a los errores reales que devolvió el pipeline en cada ejecución.
+
+### ¿Qué no hizo la IA?
+
+- No tomó decisiones sobre qué casos de prueba eran relevantes para el negocio
+- No definió la estrategia de testing ni la cobertura esperada
+- No validó si los resultados eran correctos desde el punto de vista funcional
+- No reemplazó el criterio del QA Engineer en ningún momento
+
+### Por qué esto importa
+
+Integrar IA en el flujo de QA es una habilidad emergente en la industria. Este proyecto documenta un flujo real donde la IA actúa como herramienta de productividad, mientras el profesional de QA mantiene el control, el criterio y la responsabilidad sobre la calidad del producto.
+
+---
+
 ## Autor
 
 **Miguel** — QA Automation Engineer  
@@ -139,3 +167,11 @@ Stack: Python · Playwright · Pytest · SQL · Postman · Swagger · JMeter · 
 
 ---
 
+## Roadmap
+
+- [x] Suite de tests Form Authentication
+- [x] Reporte HTML con perspectiva técnica y de negocio
+- [x] Pipeline CI/CD con GitHub Actions
+- [x] Envío automático de reporte por correo
+- [ ] Tests de API REST con Postman + Swagger
+- [ ] Análisis automático de fallos con IA (Anthropic API)
