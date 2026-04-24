@@ -167,11 +167,3 @@ Stack: Python · Playwright · Pytest · SQL · Postman · Swagger · JMeter · 
 
 ---
 
-## Roadmap
-
-- [x] Suite de tests Form Authentication
-- [x] Reporte HTML con perspectiva técnica y de negocio
-- [x] Pipeline CI/CD con GitHub Actions
-- [x] Envío automático de reporte por correo
-- [ ] Tests de API REST con Postman + Swagger
-- [ ] Análisis automático de fallos con IA (Anthropic API)
