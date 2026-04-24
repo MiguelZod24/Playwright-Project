@@ -37,3 +37,28 @@ jobs:
         with:
           name: reporte-qa
           path: reporte.html
+
+          # 7. Enviar reporte por mail al terminar (aunque haya fallos)
+      - name: Enviar reporte por mail
+        uses: dawidd6/action-send-mail@v3
+        if: always()
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          # Usa los secrets que configuraste en GitHub
+          username: ${{ secrets.GMAIL_USER }}
+          password: ${{ secrets.GMAIL_PASSWORD }}
+          subject: "QA Report - Playwright-Project - ${{ github.run_number }}"
+          to: ${{ secrets.GMAIL_USER }}
+          from: ${{ secrets.GMAIL_USER }}
+          body: |
+            Hola Migue 👋
+
+            Se ejecutó la suite de tests automáticamente.
+
+            📊 Resultado: ${{ job.status }}
+            🔗 Ver pipeline: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+            El reporte HTML está disponible como artefacto en el link de arriba.
+          attachments: reporte.html
